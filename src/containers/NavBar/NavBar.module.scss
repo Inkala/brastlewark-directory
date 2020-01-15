@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.NavBar {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $brown;
+  width: 100%;
+  padding: 10px;
+  color: white;
+}
+
+.Logo {
+  height: 50px;
+}
