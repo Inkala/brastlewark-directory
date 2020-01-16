@@ -1,36 +1,41 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import directoryService from '../../services/directoryService';
+import * as actions from '../../store/actions/actions';
 
 class GnomesList extends Component {
-  state = {
-    gnomes: []
-  };
-
   componentDidMount() {
-    directoryService
-      .getAllGnomes()
-      .then(response => {
-        this.setState({ gnomes: response.data.Brastlewark });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.onGetGnomes();
   }
 
   render() {
-    const { gnomes } = this.state;    
+    const { gnomes } = this.props;
+    console.log('Gnomes:', gnomes);
     return (
       <div>
         <h1>Gnomes List</h1>
-        {gnomes
-          ? gnomes.map(gnome => {
-              console.log(gnome.name);
-            })
-          : null}
+        {gnomes.length
+          ? gnomes.map(gnome => (
+              <img key={gnome.id} src={gnome.thumbnail} alt={`${gnome.name} profile`} />
+            ))
+          : <p>Loading</p>}
       </div>
     );
   }
 }
 
-export default GnomesList;
+const mapStateToProps = state => {
+  // console.log('STATE:', state);
+  return {
+    gnomes: state.gnomes,
+    loading: state.loading
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetGnomes: () => dispatch(actions.getAllGnomes())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GnomesList);

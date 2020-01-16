@@ -1,21 +1,27 @@
 import axios from 'axios';
 
-class DirectoryService {
-  constructor() {
-    this.directory = axios.create({
-      baseURL: 'https://raw.githubusercontent.com/rrafols/mobile_test/master'
-    });
-  }
+const axiosInstance = axios.create({
+  baseURL: 'https://raw.githubusercontent.com/rrafols/mobile_test/master'
+});
 
-  getAllGnomes() {
-    return this.directory.get('/data.json').then(response => response);
-  }
+export default axiosInstance;
 
-  // getOneGnome(id) {
-  //   return this.directory.get(`gnomes/${id}`).then(response => response);
-  // }
-}
+// class DirectoryService {
+//   constructor() {
+//     this.directory = axios.create({
+//       baseURL: 'https://raw.githubusercontent.com/rrafols/mobile_test/master'
+//     });
+//   }
 
-const directoryService = new DirectoryService();
+//   getAllGnomes() {
+//     return this.directory.get('/data.json').then(response => response);
+//   }
 
-export default directoryService;
+//   // getOneGnome(id) {
+//   //   return this.directory.get(`gnomes/${id}`).then(response => response);
+//   // }
+// }
+
+// const directoryService = new DirectoryService();
+
+// export default directoryService;
