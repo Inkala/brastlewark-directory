@@ -1,6 +1,18 @@
+.gnomesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .gnomesWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 15px;
+    width: 90%;
+  }
+}
+
 .loading {
   width: 250px;
-  margin: 10px auto;
   img {
     width: 100%;
   }

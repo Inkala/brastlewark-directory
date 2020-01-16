@@ -1,0 +1,53 @@
+@import '../../variables.scss';
+
+.gnomeCard {
+  border: 8px solid $dark-brown;
+  background-color: $dark-brown;
+  border-radius: 8px;
+  z-index: -2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: $oatmeal;
+    z-index: -1;
+    top: 0;
+  }
+
+  .gnomeImage {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    background-size: cover;
+    border: 3px solid $light-brown;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.35);
+    margin-bottom: auto;
+  }
+
+  .gnomeInfo {
+    background-color: $brown;
+    border-radius: 12px 12px 0px 0px;
+    color: white;
+    padding: 5px 10px;
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 14px;
+    width: 85%;
+
+    h3, p {
+      margin: 2px;
+    }
+    
+    p {
+      color: $beige;
+    }
+  }
+}

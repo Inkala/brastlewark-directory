@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesList.module.scss';
+import GnomeCard from '../../components/GnomeCard/GnomeCard';
 
 class GnomesList extends Component {
   componentDidMount() {
@@ -11,23 +12,30 @@ class GnomesList extends Component {
 
   render() {
     const { gnomes } = this.props;
-    const spinner = <div className={classes.loading}><img src="/img/loading.gif" alt="loading" /></div>
-    console.log('Gnomes:', gnomes);
+    const spinner = (
+      <div className={classes.loading}>
+        <img src="/img/loading.gif" alt="loading" />
+      </div>
+    );
+    console.log(gnomes);
     return (
-      <main>
+      <main className={classes.gnomesList}>
         <h1>Gnomes List</h1>
-        {(gnomes && gnomes.length)
-          ? gnomes.map(gnome => (
-              <img key={gnome.id} src={gnome.thumbnail} alt={`${gnome.name} profile`} />
-            ))
-          : spinner}
+        {gnomes && gnomes.length ? (
+          <section className={classes.gnomesWrapper}>
+            {gnomes.map(gnome => (
+              <GnomeCard key={gnome.id} gnome={gnome} />
+            ))}
+          </section>
+        ) : (
+          spinner
+        )}
       </main>
     );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log('STATE:', state);
   return {
     gnomes: state.gnomes,
     loading: state.loading

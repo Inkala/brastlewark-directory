@@ -6,12 +6,12 @@ import classes from './NavBar.module.scss';
 
 const NavBar = () => {
   return (
-    <nav className={classes.NavBar}>
+    <nav className={classes.navBar}>
       <NavLink to="/">
         <img
           src="/logo512.png"
           alt="Brastlewark logo"
-          className={classes.Logo}
+          className={classes.logo}
         />
       </NavLink>
       <SearchBar />
