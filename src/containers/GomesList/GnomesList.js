@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesList.module.scss';
@@ -11,20 +13,21 @@ class GnomesList extends Component {
   }
 
   render() {
-    const { gnomes } = this.props;
+    const { gnomes } = this.props;    
     const spinner = (
       <div className={classes.loading}>
         <img src="/img/loading.gif" alt="loading" />
       </div>
     );
-    console.log(gnomes);
     return (
       <main className={classes.gnomesList}>
-        <h1>Gnomes List</h1>
+        <h1>Welcome to Brastlewark!</h1>
         {gnomes && gnomes.length ? (
           <section className={classes.gnomesWrapper}>
             {gnomes.map(gnome => (
-              <GnomeCard key={gnome.id} gnome={gnome} />
+              <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
+                <GnomeCard gnome={gnome} />
+              </Link>
             ))}
           </section>
         ) : (

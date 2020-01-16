@@ -12,7 +12,7 @@ function App() {
     <div className={classes.App}>
       <NavBar />
       <Switch>
-        <Route path="/gnome" exact component={GnomeDetails} />
+        <Route path="/gnomes/:id" exact component={GnomeDetails} />
         <Route path="/" exact component={GnomesList} />
         <Route component={NotFound} />
       </Switch>

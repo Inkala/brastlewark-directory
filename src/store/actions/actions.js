@@ -38,3 +38,26 @@ export const getAllGnomes = () => {
       });
   };
 };
+
+
+export const getOneGnomeSuccess = oneGnome => {
+  return {
+    type: actionTypes.GET_ONE_GNOME_SUCCESS,
+    oneGnome
+  };
+};
+
+export const getOneGnome = gnomeId => {
+  return dispatch => {
+    dispatch(getAllGnomesStart());
+    axios
+      .get('/data.json')
+      .then(res => {
+        const singleGnome = res.data.Brastlewark.find(gnome => gnome.id.toString() === gnomeId);        
+        dispatch(getOneGnomeSuccess(singleGnome));
+      })
+      .catch(err => {
+        dispatch(getAllGnomesFail(err));
+      });
+  };
+};
