@@ -10,14 +10,18 @@ import classes from './GnomesDetails.module.scss';
 
 export class GnomeDetails extends Component {
   state = {
+    gnome: {},
     friendsList: []
   };
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.onGetOneGnome(id);
   }
-
+  
   componentDidUpdate(prevProps) {
+    if (this.props.match.params !== prevProps.match.params) {
+      this.props.onGetOneGnome(this.props.match.params.id);
+    }
     if (this.props.gnome.friends !== prevProps.gnome.friends) {
       this.props.onGetFriendsList(this.props.gnome.friends);
     }
