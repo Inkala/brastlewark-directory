@@ -35,7 +35,6 @@ export const getAllGnomes = () => {
   };
 };
 
-
 export const getOneGnomeSuccess = oneGnome => {
   return {
     type: actionTypes.GET_ONE_GNOME_SUCCESS,
@@ -49,7 +48,9 @@ export const getOneGnome = gnomeId => {
     axios
       .get('/data.json')
       .then(res => {
-        const singleGnome = res.data.Brastlewark.find(gnome => gnome.id.toString() === gnomeId);        
+        const singleGnome = res.data.Brastlewark.find(
+          gnome => gnome.id.toString() === gnomeId
+        );
         dispatch(getOneGnomeSuccess(singleGnome));
       })
       .catch(err => {
@@ -62,24 +63,26 @@ export const setSearchTerm = searchTerm => {
   return {
     type: actionTypes.SET_SEARCH_TERM,
     searchTerm
-  }
-}
-
-export const searchByNameSuccess = gnomeByName => {
-  return {
-    type: actionTypes.SEARCH_BY_NAME_SUCCESS,
-    gnomeByName
   };
 };
 
-export const searchByName = searchInput => {
+export const getFriendsListSuccess = friendsList => {
+  return {
+    type: actionTypes.GET_FRIENDS_LIST_SUCCESS,
+    friendsList
+  };
+};
+
+export const getFriendsList = friendsArr => {
   return dispatch => {
     dispatch(getAllGnomesStart());
     axios
       .get('/data.json')
       .then(res => {
-        const singleGnome = res.data.Brastlewark.find(gnome => gnome.name === searchInput);        
-        dispatch(searchByNameSuccess(singleGnome));
+        const friendsList = friendsArr.map(friend =>
+          res.data.Brastlewark.find(gnome => gnome.name === friend)
+        );
+        dispatch(getFriendsListSuccess(friendsList));
       })
       .catch(err => {
         dispatch(getAllGnomesFail(err));
