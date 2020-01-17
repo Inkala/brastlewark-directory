@@ -13,8 +13,21 @@ export class GnomeDetails extends Component {
     this.props.onGetOneGnome(id);
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.gnomeByName &&
+      this.props.gnomeByName !== prevProps.gnomeByName
+    ) {
+      this.props.history.push(`/gnomes/${this.props.gnomeByName.id}`);
+    }
+  }
+
   goBackHandler = () => {
     this.props.history.goBack();
+  };
+
+  searchByNameHandler = name => {
+    this.props.onSearchByName(name);
   };
 
   render() {
@@ -45,7 +58,9 @@ export class GnomeDetails extends Component {
         const id = shortid.generate();
         return (
           <li key={id} className={classes.infoItem}>
-            {friend}
+            <button onClick={() => this.searchByNameHandler(friend)}>
+              {friend}
+            </button>
           </li>
         );
       });
@@ -58,16 +73,32 @@ export class GnomeDetails extends Component {
           <section className={classes.gnomeDetailsWrapper}>
             <div className={classes.gnomeImage} style={gnomeImg}></div>
             <section className={classes.gnomeInfo}>
-              <p><strong>Race:</strong> Gnome</p>
               <p>
-                <strong>Gender:</strong>{' '}{gnome.name.length < 20 ? 'Male' : 'Female'}</p>
-              <p><strong>Age:</strong> {gnome.age}</p>
-              <p><strong>Weight:</strong> {gnome.weight.toFixed(2)} cm</p>
-              <p><strong>Height:</strong> {gnome.height.toFixed(2)} kg</p>
-              <p><strong>Hair Color:</strong> {gnome.hair_color}</p>
-              <p><strong>Professions:</strong></p>
+                <strong>Race:</strong> Gnome
+              </p>
+              <p>
+                <strong>Gender:</strong>{' '}
+                {gnome.name.length < 20 ? 'Male' : 'Female'}
+              </p>
+              <p>
+                <strong>Age:</strong> {gnome.age}
+              </p>
+              <p>
+                <strong>Weight:</strong> {gnome.weight.toFixed(2)} cm
+              </p>
+              <p>
+                <strong>Height:</strong> {gnome.height.toFixed(2)} kg
+              </p>
+              <p>
+                <strong>Hair Color:</strong> {gnome.hair_color}
+              </p>
+              <p>
+                <strong>Professions:</strong>
+              </p>
               <ul className={classes.professions}>{professions}</ul>
-              <p><strong>Friends:</strong></p>
+              <p>
+                <strong>Friends:</strong>
+              </p>
               <ul className={classes.friends}>{friends}</ul>
             </section>
           </section>
@@ -86,13 +117,15 @@ export class GnomeDetails extends Component {
 const mapStateToProps = state => {
   return {
     gnome: state.oneGnome,
-    loading: state.loading
+    loading: state.loading,
+    gnomeByName: state.gnomeByName
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetOneGnome: gnomeId => dispatch(actions.getOneGnome(gnomeId))
+    onGetOneGnome: gnomeId => dispatch(actions.getOneGnome(gnomeId)),
+    onSearchByName: searchInput => dispatch(actions.searchByName(searchInput))
   };
 };
 

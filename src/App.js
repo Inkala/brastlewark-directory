@@ -13,6 +13,7 @@ import NavBar from './containers/NavBar/NavBar';
 // Spinner in no search results
 // Clean Search Term on Change Component
 // Responsive
+// Create one action for the fetch all
 
 function App() {
   return (

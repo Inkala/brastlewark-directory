@@ -64,3 +64,25 @@ export const setSearchTerm = searchTerm => {
     searchTerm
   }
 }
+
+export const searchByNameSuccess = gnomeByName => {
+  return {
+    type: actionTypes.SEARCH_BY_NAME_SUCCESS,
+    gnomeByName
+  };
+};
+
+export const searchByName = searchInput => {
+  return dispatch => {
+    dispatch(getAllGnomesStart());
+    axios
+      .get('/data.json')
+      .then(res => {
+        const singleGnome = res.data.Brastlewark.find(gnome => gnome.name === searchInput);        
+        dispatch(searchByNameSuccess(singleGnome));
+      })
+      .catch(err => {
+        dispatch(getAllGnomesFail(err));
+      });
+  };
+};

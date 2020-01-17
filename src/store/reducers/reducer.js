@@ -35,6 +35,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         searchTerm: action.searchTerm
       };
+    case actionTypes.SEARCH_BY_NAME_SUCCESS:
+      return {
+        ...state,
+        gnomeByName: action.gnomeByName
+      };
     default:
       return state;
   }

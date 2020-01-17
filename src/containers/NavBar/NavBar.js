@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import classes from './NavBar.module.scss';
 
-const NavBar = props => {
-  console.log('NavBar', props.match);
+const NavBar = () => {
   return (
     <nav className={classes.navBar}>
       <NavLink to="/">

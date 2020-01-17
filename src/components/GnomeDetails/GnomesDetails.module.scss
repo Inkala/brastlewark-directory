@@ -55,8 +55,10 @@
         }
       }
 
-      .friends {
+      .friends button {
         color: $blue;
+        font-size: inherit;
+        cursor: pointer;
         .infoItem:before {
           background: url(/img/heart.png);
           background-size: cover;
