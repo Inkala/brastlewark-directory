@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fondamento&display=swap');
 @import './variables.scss';
 
 html {
@@ -27,34 +27,22 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Old Standard TT', serif;
+  font-family: 'Fondamento', cursive;
+  font-weight: normal;
 }
 
 h1 {
   color: $red;
   font-size: 3em;
-  text-shadow:
-    0 -1px 0 $dark-red,
-    0 1px 0 $dark-red,
-    0 2px 0 $dark-red,
-    0 3px 0 $dark-red,
-
-    -1px -1px 0 $dark-red,
-    -1px 0 0 $dark-red,
-    -1px 1px 0 $dark-red,
-    -1px 2px 0 $dark-red,
-    -1px 3px 0 $dark-red,
-
-    1px -1px 0 $dark-red,
-    1px 0 0 $dark-red,
-    1px 1px 0 $dark-red,
-    1px 2px 0 $dark-red,
-    1px 3px 0 $dark-red,
-    
-    0 4px 6px black,
+  text-shadow: 0 -1px 0 $dark-red, 0 1px 0 $dark-red, 0 2px 0 $dark-red,
+    0 3px 0 $dark-red, -1px -1px 0 $dark-red, -1px 0 0 $dark-red,
+    -1px 1px 0 $dark-red, -1px 2px 0 $dark-red, -1px 3px 0 $dark-red,
+    1px -1px 0 $dark-red, 1px 0 0 $dark-red, 1px 1px 0 $dark-red,
+    1px 2px 0 $dark-red, 1px 3px 0 $dark-red, 0 4px 6px black;
 }
 
-p, ul {
+p,
+ul {
   margin: 0;
   padding: 0;
   color: $brown;

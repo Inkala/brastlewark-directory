@@ -44,25 +44,32 @@
           display: flex;
           padding-left: 10px;
           &:before {
-              content: '';
-              margin-right: 5px;
-              margin-top: 2px;
-              height: 18px;
-              background: url(/img/hammer.png);
-              background-size: cover;
-              width: 18px;
-            }
+            content: '';
+            margin-right: 5px;
+            margin-top: 2px;
+            height: 18px;
+            background: url(/img/hammer.png);
+            background-size: cover;
+            width: 18px;
+          }
         }
       }
 
-      .friends button {
-        color: $blue;
-        font-size: inherit;
-        cursor: pointer;
+      .friends {
+        a {
+          color: $blue;
+          font-size: inherit;
+          cursor: pointer;
+        }
         .infoItem:before {
           background: url(/img/heart.png);
           background-size: cover;
+          height: 16px;
+          margin-top: 3px;
         }
+      }
+      p {
+        margin: 5px 0 2px;
       }
     }
   }

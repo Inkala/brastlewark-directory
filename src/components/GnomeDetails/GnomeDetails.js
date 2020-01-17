@@ -79,8 +79,8 @@ export class GnomeDetails extends Component {
               <p><strong>Race:</strong> Gnome</p>
               <p><strong>Gender:</strong> {gnome.name.length < 20 ? 'Male' : 'Female'}</p>
               <p><strong>Age:</strong> {gnome.age}</p>
-              <p><strong>Weight:</strong> {gnome.weight.toFixed(2)} cm</p>
-              <p><strong>Height:</strong> {gnome.height.toFixed(2)} kg</p>
+              <p><strong>Weight:</strong> {gnome.weight.toFixed(2)} kg</p>
+              <p><strong>Height:</strong> {Math.round(gnome.height)} cm</p>
               <p><strong>Hair Color:</strong> {gnome.hair_color}</p>
               <p><strong>Professions:</strong></p>
               <ul className={classes.professions}>{professions}</ul>
