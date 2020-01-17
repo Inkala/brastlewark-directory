@@ -2,13 +2,10 @@
 
 .navBar {
   display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $brown;
-  width: 100%;
-  padding: 10px;
-  color: white;
+    justify-content: center;
+    background-color: $brown;
+    padding: 10px 15px;
+    color: white;
 }
 
 .logo {

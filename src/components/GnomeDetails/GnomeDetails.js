@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesDetails.module.scss';
@@ -15,7 +15,7 @@ export class GnomeDetails extends Component {
 
   goBackHandler = () => {
     this.props.history.goBack();
-  }
+  };
 
   render() {
     const { gnome } = this.props;
@@ -59,7 +59,8 @@ export class GnomeDetails extends Component {
             <div className={classes.gnomeImage} style={gnomeImg}></div>
             <section className={classes.gnomeInfo}>
               <p><strong>Race:</strong> Gnome</p>
-              <p><strong>Gender:</strong> {gnome.name.length < 20 ? "Male" : "Female"}</p>
+              <p>
+                <strong>Gender:</strong>{' '}{gnome.name.length < 20 ? 'Male' : 'Female'}</p>
               <p><strong>Age:</strong> {gnome.age}</p>
               <p><strong>Weight:</strong> {gnome.weight.toFixed(2)} cm</p>
               <p><strong>Height:</strong> {gnome.height.toFixed(2)} kg</p>
@@ -72,10 +73,11 @@ export class GnomeDetails extends Component {
           </section>
         ) : (
           spinner
-          )}
-          <button onClick={this.goBackHandler}>
-            <FontAwesomeIcon icon={faArrowLeft} />Go Back
-          </button>
+        )}
+        <button onClick={this.goBackHandler}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+          Go Back
+        </button>
       </section>
     );
   }

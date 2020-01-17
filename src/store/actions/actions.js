@@ -1,7 +1,3 @@
-// TODO:
-// Move service to a separate file
-// import directoryService from '../../services/directoryService';
-
 import axios from '../../services/directoryService';
 import * as actionTypes from './actionTypes';
 
@@ -61,3 +57,10 @@ export const getOneGnome = gnomeId => {
       });
   };
 };
+
+export const setSearchTerm = searchTerm => {
+  return {
+    type: actionTypes.SET_SEARCH_TERM,
+    searchTerm
+  }
+}

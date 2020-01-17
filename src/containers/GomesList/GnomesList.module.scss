@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   .gnomesWrapper {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 15px;
     width: 90%;
+    margin-top: 10px;
   }
 }
 

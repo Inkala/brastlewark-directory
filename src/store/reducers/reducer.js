@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   gnomes: [],
-  oneGnome: {}
+  oneGnome: {},
+  searchTerm: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         oneGnome: action.oneGnome,
         loading: false
+      };
+    case actionTypes.SET_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.searchTerm
       };
     default:
       return state;

@@ -2,29 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesList.module.scss';
 import GnomeCard from '../../components/GnomeCard/GnomeCard';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 class GnomesList extends Component {
+  state = {
+    gnomes: null
+  };
+
   componentDidMount() {
     this.props.onGetGnomes();
+    this.setState({ gnomes: this.props.gnomes });
   }
 
   render() {
-    const { gnomes } = this.props;    
+    let filteredGnomes = this.props.gnomes;
+    if (this.props.searchTerm) {
+      filteredGnomes = this.props.gnomes.filter(({ name }) =>
+        name.toLowerCase().match(this.props.searchTerm)
+      );
+    }
     const spinner = (
       <div className={classes.loading}>
         <img src="/img/loading.gif" alt="loading" />
       </div>
     );
+
     return (
       <main className={classes.gnomesList}>
+        <SearchBar />
         <h1>Welcome to Brastlewark!</h1>
-        {gnomes && gnomes.length ? (
+        {filteredGnomes && filteredGnomes.length ? (
           <section className={classes.gnomesWrapper}>
-            {gnomes.map(gnome => (
+            {filteredGnomes.map(gnome => (
               <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
                 <GnomeCard gnome={gnome} />
               </Link>
@@ -41,7 +53,8 @@ class GnomesList extends Component {
 const mapStateToProps = state => {
   return {
     gnomes: state.gnomes,
-    loading: state.loading
+    loading: state.loading,
+    searchTerm: state.searchTerm
   };
 };
 
