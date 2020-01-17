@@ -2,13 +2,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   .gnomesWrapper {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     width: 90%;
     margin-top: 10px;
+
+    a {
+      border-radius: 8px;
+      margin: 10px;
+
+      &:hover {
+        box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    p {
+      text-align: center;
+      width: 100%;
+    }
   }
 }
 

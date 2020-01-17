@@ -7,14 +7,6 @@ import NotFound from './components/NotFound/NotFound';
 import classes from './App.module.scss';
 import NavBar from './containers/NavBar/NavBar';
 
-// TODO:
-// Move service to a separate file
-// import directoryService from '../../services/directoryService';
-// Spinner in no search results
-// Clean Search Term on Change Component
-// Responsive
-// Create one action for the fetch all
-
 function App() {
   return (
     <div className={classes.App}>

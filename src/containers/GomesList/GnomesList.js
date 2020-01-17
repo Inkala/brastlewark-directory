@@ -14,15 +14,36 @@ class GnomesList extends Component {
 
   componentDidMount() {
     this.props.onGetGnomes();
-    this.setState({ gnomes: this.props.gnomes });
   }
 
+  componentDidUpdate(prevProps) {
+    // console.log('Props', this.props.searchTerm);
+    // console.log('Prev', prevProps.searchTerm);
+    if (this.props.gnomes !== prevProps.gnomes) {
+      this.setState({ gnomes: this.props.gnomes });
+    }
+    if (this.props.searchTerm !== prevProps.searchTerm) {
+      this.filterGnomesHandler(this.props.searchTerm);
+    }
+  }
+
+  filterGnomesHandler = searchTerm => {
+    const filteredGnomes = this.props.gnomes.filter(({ name }) =>
+      name.toLowerCase().match(this.props.searchTerm)
+    );
+    this.setState({ gnomes: filteredGnomes });
+  };
+
   render() {
-    let filteredGnomes = this.props.gnomes;
-    if (this.props.searchTerm) {
-      filteredGnomes = this.props.gnomes.filter(({ name }) =>
-        name.toLowerCase().match(this.props.searchTerm)
-      );
+    console.log('State:', this.state);
+    const { gnomes } = this.state;
+    let gnomesList = <p>This gnome doesn't live here. Please try another name...</p>;
+    if (gnomes && gnomes.length) {
+      gnomesList = gnomes.map(gnome => (
+        <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
+          <GnomeCard gnome={gnome} />
+        </Link>
+      ));
     }
     const spinner = (
       <div className={classes.loading}>
@@ -34,14 +55,8 @@ class GnomesList extends Component {
       <main className={classes.gnomesList}>
         <SearchBar />
         <h1>Welcome to Brastlewark!</h1>
-        {filteredGnomes && filteredGnomes.length ? (
-          <section className={classes.gnomesWrapper}>
-            {filteredGnomes.map(gnome => (
-              <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
-                <GnomeCard gnome={gnome} />
-              </Link>
-            ))}
-          </section>
+        {gnomes ? (
+          <section className={classes.gnomesWrapper}>{gnomesList}</section>
         ) : (
           spinner
         )}
