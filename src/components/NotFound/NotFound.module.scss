@@ -1,0 +1,42 @@
+@import '../../variables.scss';
+
+.notFound {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 75px);
+
+  .notFoundWrapper {
+    display: flex;
+    height: 70vh;
+    width: 80%;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+
+    div {
+      padding: 35px;
+      line-height: 1.2;
+
+      h3,
+      p {
+        font-family: 'Fondamento', cursive;
+        font-size: 3em;
+        margin: 20px 0;
+      }
+
+      p {
+        font-size: 2em;
+        margin-bottom: 65px;
+      }
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+}
