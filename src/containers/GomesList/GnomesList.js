@@ -6,10 +6,14 @@ import * as actions from '../../store/actions/actions';
 import classes from './GnomesList.module.scss';
 import GnomeCard from '../../components/GnomeCard/GnomeCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Pagination from '../../components/Pagination/Pagination';
 
 class GnomesList extends Component {
   state = {
-    gnomes: null
+    gnomes: null,
+    cardsPerPage: 30,
+    pagesAmount: 0,
+    currentPage: 1
   };
 
   componentDidMount() {
@@ -17,27 +21,33 @@ class GnomesList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // console.log('Props', this.props.searchTerm);
-    // console.log('Prev', prevProps.searchTerm);
     if (this.props.gnomes !== prevProps.gnomes) {
-      this.setState({ gnomes: this.props.gnomes });
+      this.handlePagination();
     }
     if (this.props.searchTerm !== prevProps.searchTerm) {
       this.filterGnomesHandler(this.props.searchTerm);
     }
   }
 
+  handlePagination = (currentPage = 1) => {
+    const { cardsPerPage } = this.state;
+    const cardStart = currentPage - 1;
+    const gnomes = this.props.gnomes.slice(cardStart, cardStart + cardsPerPage);
+    this.setState({ gnomes, currentPage });
+  };
+
   filterGnomesHandler = searchTerm => {
     const filteredGnomes = this.props.gnomes.filter(({ name }) =>
-      name.toLowerCase().match(this.props.searchTerm)
+      name.toLowerCase().match(searchTerm)
     );
     this.setState({ gnomes: filteredGnomes });
   };
 
   render() {
-    console.log('State:', this.state);
-    const { gnomes } = this.state;
-    let gnomesList = <p>This gnome doesn't live here. Please try another name...</p>;
+    const { gnomes, cardsPerPage, currentPage } = this.state;
+    let gnomesList = (
+      <p>This gnome doesn't live here. Please try another name...</p>
+    );
     if (gnomes && gnomes.length) {
       gnomesList = gnomes.map(gnome => (
         <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
@@ -56,7 +66,17 @@ class GnomesList extends Component {
         <SearchBar />
         <h1>Welcome to Brastlewark!</h1>
         {gnomes ? (
-          <section className={classes.gnomesWrapper}>{gnomesList}</section>
+          <React.Fragment>
+            <section className={classes.gnomesWrapper}>{gnomesList}</section>
+            <nav>
+              <Pagination
+                totalCards={this.props.gnomes.length}
+                cardsPerPage={cardsPerPage}
+                paginationHandler={this.handlePagination}
+                currentPage={currentPage}
+              />
+            </nav>
+          </React.Fragment>
         ) : (
           spinner
         )}
