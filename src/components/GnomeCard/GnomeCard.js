@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './GnomeCard.module.scss';
 
@@ -18,6 +19,10 @@ const GnomeCard = props => {
       </div>
     </article>
   );
+};
+
+GnomeCard.propTypes = {
+  gnome: PropTypes.object
 };
 
 export default GnomeCard;

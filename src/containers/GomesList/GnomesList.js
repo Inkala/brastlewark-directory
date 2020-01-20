@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesList.module.scss';
@@ -26,7 +27,7 @@ class GnomesList extends Component {
     const { currentPage, filteredGnomes } = this.state;
 
     if (gnomes !== prevProps.gnomes) {
-      this.setState({filteredGnomes: gnomes})
+      this.setState({ filteredGnomes: gnomes });
     }
     if (filteredGnomes !== prevState.filteredGnomes) {
       this.handlePagination(currentPage);
@@ -43,7 +44,7 @@ class GnomesList extends Component {
   };
 
   handlePagination = currentPage => {
-    const { cardsPerPage, filteredGnomes } = this.state;    
+    const { cardsPerPage, filteredGnomes } = this.state;
     const startCard = currentPage - 1;
     const displayedGnomes = filteredGnomes.slice(
       startCard,
@@ -102,6 +103,13 @@ class GnomesList extends Component {
     );
   }
 }
+
+GnomesList.propTypes = {
+  gnomes: PropTypes.array,
+  loading: PropTypes.bool,
+  searchTerm: PropTypes.string,
+  onGetGnomes: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {

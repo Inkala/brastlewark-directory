@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesDetails.module.scss';
 
-export class GnomeDetails extends Component {
+class GnomeDetails extends Component {
   state = {
     gnome: {},
     friendsList: []
   };
+  
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.onGetOneGnome(id);
@@ -106,6 +108,14 @@ const mapStateToProps = state => {
     loading: state.loading,
     friendsList: state.friendsList
   };
+};
+
+GnomeDetails.propTypes = {
+  gnome: PropTypes.object,
+  loading: PropTypes.bool,
+  friendsList: PropTypes.array,
+  onGetOneGnome: PropTypes.func,
+  onGetFriendsList: PropTypes.func,
 };
 
 const mapDispatchToProps = dispatch => {

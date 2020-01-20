@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,19 +11,12 @@ class SearchBar extends Component {
   state = {
     inputSearch: ''
   }
-  // handleFilter = () => {
-  //   const { foods, inputSearch } = this.state;
-  //   const filterFoods = foods.filter(food => {
-  //     return food.name.toLowerCase().indexOf(inputSearch.toLowerCase()) !== -1;
-  //   });
-  //   this.setState({ foods: filterFoods });
-  // };
-
+  
   handleSearch = event => {
     this.setState({ inputSearch: event.target.value });
     this.props.onSearchChange(event.target.value.toLowerCase());
   };
-
+  
   render() {
     return (
       <section className={classes.searchBar}>
@@ -38,6 +32,10 @@ class SearchBar extends Component {
   }
 }
 
+SearchBar.propTypes = {
+  searchTerm: PropTypes.string,
+  onSearchChange: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {

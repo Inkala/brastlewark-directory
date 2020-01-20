@@ -1,14 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import classes from './Pagination.module.scss';
 
-function Pagination({
+const Pagination = ({
   cardsPerPage,
   totalCards,
   paginationHandler,
   currentPage
-}) {
-  // console.log('Total:', totalCards);
-  
+}) => {
   const pageNumbers = [];
   const pagesAmount = Math.ceil(totalCards / cardsPerPage);
   for (let i = 1; i <= pagesAmount; i++) {
@@ -28,6 +28,13 @@ function Pagination({
       ))}
     </ul>
   );
-}
+};
+
+Pagination.propTypes = {
+  cardsPerPage: PropTypes.number,
+  totalCards: PropTypes.number,
+  currentPage: PropTypes.number,
+  paginationHandler: PropTypes.func,
+};
 
 export default Pagination;
