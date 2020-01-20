@@ -25,6 +25,7 @@ const reducer = (state = initialState, action) => {
         loading: false
       };
     case actionTypes.GET_ONE_GNOME_SUCCESS:
+      debugger;
       return {
         ...state,
         oneGnome: action.oneGnome,

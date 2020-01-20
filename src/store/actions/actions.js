@@ -1,4 +1,4 @@
-import axios from '../../services/directoryService';
+import axios from '../../helpers/directoryService';
 import * as actionTypes from './actionTypes';
 
 export const getAllGnomesSuccess = gnomes => {

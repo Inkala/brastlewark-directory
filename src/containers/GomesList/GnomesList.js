@@ -62,8 +62,6 @@ class GnomesList extends Component {
   };
 
   render() {
-    console.log("Props:", this.props);
-    
     const { displayedGnomes, filteredGnomes, cardsPerPage, currentPage } = this.state;
     let gnomesList = (
       <p>This gnome doesn't live here. Please try another name...</p>
