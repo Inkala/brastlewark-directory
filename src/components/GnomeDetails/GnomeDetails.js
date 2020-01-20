@@ -30,7 +30,7 @@ export class GnomeDetails extends Component {
     }
   }
 
-  goBackHandler = () => {
+  handleGoBack = () => {
     this.props.history.goBack();
   };
 
@@ -91,7 +91,7 @@ export class GnomeDetails extends Component {
         ) : (
           spinner
         )}
-        <button onClick={this.goBackHandler}>
+        <button onClick={this.handleGoBack}>
           <FontAwesomeIcon icon={faArrowLeft} />
           Go Back
         </button>

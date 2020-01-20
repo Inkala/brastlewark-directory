@@ -12,6 +12,7 @@ import NavBar from './containers/NavBar/NavBar';
 // Destructure props
 // Change metod names
 // No results message styles
+// Spinner
 
 function App() {
   return (

@@ -7,6 +7,8 @@ function Pagination({
   paginationHandler,
   currentPage
 }) {
+  // console.log('Total:', totalCards);
+  
   const pageNumbers = [];
   const pagesAmount = Math.ceil(totalCards / cardsPerPage);
   for (let i = 1; i <= pagesAmount; i++) {

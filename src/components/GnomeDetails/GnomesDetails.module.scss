@@ -3,6 +3,7 @@
 .gnomeDetails {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 80%;
   margin: 15px auto;
   padding: 2px 35px 15px;
@@ -18,10 +19,11 @@
 
   .gnomeDetailsWrapper {
     display: flex;
+    flex-direction: column;
+    width: 100%;
 
     .gnomeImage {
-      width: 185px;
-      min-width: 185px;
+      width: 200px;
       height: 260px;
       border: 6px solid $brown;
       background-size: cover;
@@ -31,14 +33,13 @@
 
     .gnomeInfo {
       text-align: left;
-      padding-left: 25px;
-      border-left: 1px solid $light-brown;
-      margin-left: 25px;
+      margin-top: 10px;
 
       ul {
         list-style: none;
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
 
         .infoItem {
           display: flex;
@@ -84,10 +85,48 @@
     border: none;
     align-self: flex-end;
     padding: 5px;
+    margin-top: 6px;
 
     svg {
       margin-right: 5px;
       font-size: 0.9em;
+    }
+  }
+  .loading img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 480px) {
+  .gnomeDetails {
+    .gnomeDetailsWrapper {
+      flex-direction: row;
+      .gnomeImage {
+        width: 180px;
+        height: 215px;
+        margin-top: 10px;
+      }
+      .gnomeInfo {
+        padding-left: 25px;
+        border-left: 1px solid $light-brown;
+        margin-left: 25px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .gnomeDetails {
+    .gnomeDetailsWrapper {
+      .gnomeImage {
+        width: 200px;
+        height: 265px;
+        min-width: 200px;
+      }
+      .gnomeInfo {
+        ul {
+          flex-direction: row;
+        }
+      }
     }
   }
 }

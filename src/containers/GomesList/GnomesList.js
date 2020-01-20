@@ -10,9 +10,10 @@ import Pagination from '../../components/Pagination/Pagination';
 
 class GnomesList extends Component {
   state = {
-    gnomes: null,
-    cardsPerPage: 30,
-    pagesAmount: 0,
+    displayedGnomes: [], // Gnomes to show after filter and pagination
+    filteredGnomes: null, // Gnomes to use on pagination
+    cardsPerPage: 30, // Number of cards per page
+    totalGnomes: 0, // Total amount of gnomes to calculate amount of pages
     currentPage: 1
   };
 
@@ -20,36 +21,52 @@ class GnomesList extends Component {
     this.props.onGetGnomes();
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.gnomes !== prevProps.gnomes) {
-      this.handlePagination();
+  componentDidUpdate(prevProps, prevState) {
+    const { gnomes, searchTerm } = this.props;
+    const { currentPage, filteredGnomes } = this.state;
+
+    if (gnomes !== prevProps.gnomes) {
+      this.setState({filteredGnomes: gnomes})
     }
-    if (this.props.searchTerm !== prevProps.searchTerm) {
-      this.filterGnomesHandler(this.props.searchTerm);
+    if (filteredGnomes !== prevState.filteredGnomes) {
+      this.handlePagination(currentPage);
+    }
+
+    if (searchTerm !== prevProps.searchTerm) {
+      this.handleGnomesFilter(searchTerm);
     }
   }
 
-  handlePagination = (currentPage = 1) => {
-    const { cardsPerPage } = this.state;
-    const cardStart = currentPage - 1;
-    const gnomes = this.props.gnomes.slice(cardStart, cardStart + cardsPerPage);
-    this.setState({ gnomes, currentPage });
+  handlePageChange = currentPage => {
+    this.setState({ currentPage });
+    this.handlePagination(currentPage);
   };
 
-  filterGnomesHandler = searchTerm => {
+  handlePagination = currentPage => {
+    const { cardsPerPage, filteredGnomes } = this.state;    
+    const startCard = currentPage - 1;
+    const displayedGnomes = filteredGnomes.slice(
+      startCard,
+      startCard + cardsPerPage
+    );
+
+    this.setState({ displayedGnomes, totalGnomes: filteredGnomes.length });
+  };
+
+  handleGnomesFilter = searchTerm => {
     const filteredGnomes = this.props.gnomes.filter(({ name }) =>
       name.toLowerCase().match(searchTerm)
     );
-    this.setState({ gnomes: filteredGnomes });
+    this.setState({ filteredGnomes, currentPage: 1 });
   };
 
   render() {
-    const { gnomes, cardsPerPage, currentPage } = this.state;
+    const { displayedGnomes, cardsPerPage, currentPage } = this.state;
     let gnomesList = (
       <p>This gnome doesn't live here. Please try another name...</p>
     );
-    if (gnomes && gnomes.length) {
-      gnomesList = gnomes.map(gnome => (
+    if (displayedGnomes && displayedGnomes.length) {
+      gnomesList = displayedGnomes.map(gnome => (
         <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
           <GnomeCard gnome={gnome} />
         </Link>
@@ -61,18 +78,19 @@ class GnomesList extends Component {
       </div>
     );
 
+    // console.log('Gnomes:', this.state.gnomes);
     return (
       <main className={classes.gnomesList}>
         <SearchBar />
         <h1>Welcome to Brastlewark!</h1>
-        {gnomes ? (
+        {displayedGnomes ? (
           <React.Fragment>
             <section className={classes.gnomesWrapper}>{gnomesList}</section>
             <nav>
               <Pagination
-                totalCards={this.props.gnomes.length}
+                totalCards={this.state.totalGnomes}
                 cardsPerPage={cardsPerPage}
-                paginationHandler={this.handlePagination}
+                paginationHandler={this.handlePageChange}
                 currentPage={currentPage}
               />
             </nav>

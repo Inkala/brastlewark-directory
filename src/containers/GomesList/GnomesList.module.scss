@@ -4,19 +4,19 @@
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  
+
+  h1 {
+    font-size: 2.5em;
+    margin: 15px 0;
+  }
+
   .gnomesWrapper {
-    // display: flex;
-    // justify-content: space-between;
-    // flex-wrap: wrap;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    margin-top: 10px;
+    grid-gap: 15px;
+    width: 90%;
 
     a {
       border-radius: 8px;
-      margin: 10px;
 
       &:hover {
         box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
@@ -34,5 +34,27 @@
   width: 250px;
   img {
     width: 100%;
+  }
+}
+
+@media (min-width: 480px) {
+  .gnomesList {
+    h1 {
+      font-size: 3em;
+    }
+    .gnomesWrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .gnomesList {
+    h1 {
+      margin: 20px 0;
+    }
+    .gnomesWrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }

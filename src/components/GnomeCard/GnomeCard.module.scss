@@ -1,15 +1,15 @@
 @import '../../variables.scss';
 
 .gnomeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
   border: 8px solid $dark-brown;
   background-color: $dark-brown;
   border-radius: 8px;
   z-index: -2;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  align-items: center;
 
   &:after {
     content: '';
@@ -24,9 +24,9 @@
   }
 
   .gnomeImage {
-    width: 200px;
-    height: 150px;
-    margin: 10px;
+    width: 90%;
+    height: 185px;
+    margin: 15px;
     background-size: cover;
     border: 3px solid $light-brown;
     border-radius: 5px;
@@ -43,12 +43,22 @@
     margin-top: 14px;
     width: 85%;
 
-    h3, p {
-      margin: 2px;
+    h3 {
+      margin: 8px 0 2px;
     }
-    
+
     p {
       color: $beige;
     }
   }
+}
+
+@media (min-width: 480px) {
+  .gnomeCard {
+    .gnomeImage {
+      height: 145px;
+    }
+  }
+}
+@media (min-width: 768px) {
 }
