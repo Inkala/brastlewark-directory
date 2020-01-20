@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/brastlewark-directory/static/css/main.3c416793.chunk.css",
+    "main.js": "/brastlewark-directory/static/js/main.c92727ce.chunk.js",
+    "main.js.map": "/brastlewark-directory/static/js/main.c92727ce.chunk.js.map",
+    "runtime-main.js": "/brastlewark-directory/static/js/runtime-main.31369e9e.js",
+    "runtime-main.js.map": "/brastlewark-directory/static/js/runtime-main.31369e9e.js.map",
+    "static/js/2.99152c8c.chunk.js": "/brastlewark-directory/static/js/2.99152c8c.chunk.js",
+    "static/js/2.99152c8c.chunk.js.map": "/brastlewark-directory/static/js/2.99152c8c.chunk.js.map",
+    "index.html": "/brastlewark-directory/index.html",
+    "precache-manifest.066e79b01b3f7b2f556e8ad6113deb15.js": "/brastlewark-directory/precache-manifest.066e79b01b3f7b2f556e8ad6113deb15.js",
+    "service-worker.js": "/brastlewark-directory/service-worker.js",
+    "static/css/main.3c416793.chunk.css.map": "/brastlewark-directory/static/css/main.3c416793.chunk.css.map",
+    "static/js/2.99152c8c.chunk.js.LICENSE": "/brastlewark-directory/static/js/2.99152c8c.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.31369e9e.js",
+    "static/js/2.99152c8c.chunk.js",
+    "static/css/main.3c416793.chunk.css",
+    "static/js/main.c92727ce.chunk.js"
+  ]
+}
