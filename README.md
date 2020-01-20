@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About this test
 
-## Available Scripts
+To see this test working, clone the repository, type `npm install` from the root folder and then type `npm start`.
 
-In the project directory, you can run:
+### The test
 
-### `yarn start`
+The app has a main page that renders a card for each gnome divided by pages according to the amount of results from the JSON. The search bar filters the gnomes by name and clicking the card will open the details page with all the information about the gnomes and links to their friends.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+###Technologies used
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+For this test I chose to use [React](https://reactjs.org/) for it is not only the JavaScript tool in which I have more knowledge and experience, but also because it is one of the suggestions for the test.
 
-### `yarn test`
+I also used [Redux](https://redux.js.org/) because it is a tool used with [React](https://reactjs.org/) very often, and because having a global state can be really usefull when handling data that should be available and modified by more than one component.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For getching the information from the URL I used [axios](https://github.com/axios/axios).
 
-### `yarn build`
+### Success
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+All the functionalities that were added to the app are working as expected. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Challenges
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I don't have much experience using Redux and it was a good practice. I also haven't worked much with tests so I had to do some research on that.
 
-### `yarn eject`
+### What to improve
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+There is always things that you want to improve when developing something. For example I want to add more tests or limit the amount of buttons in the pagination to those closer to the current page.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The CSS can be improved wuth with animations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Additional notes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I love RPGs, which made the test super fun to do :)
