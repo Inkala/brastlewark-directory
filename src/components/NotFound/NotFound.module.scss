@@ -4,18 +4,19 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: calc(100vh - 75px);
 
   .notFoundWrapper {
     display: flex;
-    height: 70vh;
+    align-items: center;
     width: 80%;
+    flex-direction: column-reverse;
 
     img {
-      height: 100%;
-      width: auto;
+      width: 65%;
+      max-width: 300px;
     }
 
     div {
@@ -31,19 +32,41 @@
 
       p {
         font-size: 2em;
-        margin-bottom: 65px;
+        margin-bottom: 35px;
       }
 
       h2 {
         color: $dark-red;
         font-weight: 700;
         font-size: 3em;
-        margin: 20px 0;
+        margin: 0;
       }
 
       a {
         color: $blue;
       }
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  .notFound {
+    justify-content: center;
+    .notFoundWrapper {
+      flex-direction: row;
+      height: 70vh;
+      img {
+        width: 50%;
+      }
+      div {
+        min-width: 280px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .notFound {
+    .notFoundWrapper {
     }
   }
 }
