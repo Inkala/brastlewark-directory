@@ -8,6 +8,7 @@ const NotFound = props => {
       <div className={classes.notFoundWrapper}>
         <img src="img/gnome-character.jpg" alt='' />
         <div>
+          <h2>~ 404 ~</h2>
           <h3>Are you lost, traveler?</h3>
           <p>Please try anorher route.</p>
           <Link to="/">Go back to safety</Link>
