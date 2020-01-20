@@ -62,16 +62,20 @@ class GnomesList extends Component {
   };
 
   render() {
-    const { displayedGnomes, cardsPerPage, currentPage } = this.state;
+    const { displayedGnomes, filteredGnomes, cardsPerPage, currentPage } = this.state;
     let gnomesList = (
       <p>This gnome doesn't live here. Please try another name...</p>
     );
     if (displayedGnomes && displayedGnomes.length) {
-      gnomesList = displayedGnomes.map(gnome => (
-        <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
-          <GnomeCard gnome={gnome} />
-        </Link>
-      ));
+      gnomesList = (
+        <section className={classes.gnomesWrapper}>
+          {displayedGnomes.map(gnome => (
+            <Link to={`/gnomes/${gnome.id}`} key={gnome.id}>
+              <GnomeCard gnome={gnome} />
+            </Link>
+          ))}
+        </section>
+      );
     }
     const spinner = (
       <div className={classes.loading}>
@@ -79,14 +83,13 @@ class GnomesList extends Component {
       </div>
     );
 
-    // console.log('Gnomes:', this.state.gnomes);
     return (
       <main className={classes.gnomesList}>
         <SearchBar />
         <h1>Welcome to Brastlewark!</h1>
-        {displayedGnomes ? (
+        {displayedGnomes && filteredGnomes ? (
           <React.Fragment>
-            <section className={classes.gnomesWrapper}>{gnomesList}</section>
+            {gnomesList}
             <nav>
               <Pagination
                 totalCards={this.state.totalGnomes}

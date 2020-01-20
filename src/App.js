@@ -8,11 +8,7 @@ import classes from './App.module.scss';
 import NavBar from './containers/NavBar/NavBar';
 
 // TODO:
-// PropTypes
-// Destructure props
-// Change metod names
-// No results message styles
-// Spinner
+// Handle Server Error
 
 function App() {
   return (

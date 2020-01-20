@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './NotFound.module.scss';
 
-const NotFound = props => {
+const NotFound = () => {
   return (
     <section className={classes.notFound}>
       <div className={classes.notFoundWrapper}>

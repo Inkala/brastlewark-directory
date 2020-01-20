@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 import classes from './GnomeCard.module.scss';
 
-const GnomeCard = props => {
-  const { gnome } = props;
-
+const GnomeCard = ({ gnome }) => {
+  
   // Just a random way to add a gender for the card
   const gender = gnome.name.length < 20 ? 'Male' : 'Female';
   
