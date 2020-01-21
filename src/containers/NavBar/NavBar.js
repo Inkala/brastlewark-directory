@@ -1,13 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 
 import classes from './NavBar.module.scss';
 
 const NavBar = () => {
   return (
     <nav className={classes.navBar}>
-      <NavLink to="/">
+      <NavLink className='test' to="/">
         <img
           src="/img/logo.png"
           alt="Brastlewark logo"
@@ -18,4 +17,4 @@ const NavBar = () => {
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;
