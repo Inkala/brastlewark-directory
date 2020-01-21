@@ -20,13 +20,15 @@ All the functionalities that were added to the app are working as expected.
 
 ### Challenges
 
-I don't have much experience using Redux and it was a good practice. I also haven't worked much with tests so I had to do some research on that.
+I don't have much experience using Redux and it was a good practice.
+
+I also haven't worked much with tests so I had to do some research on that. I tried testing the asynchronous behaviour with redux-mock-store and moxios but I was not able to make it work.
 
 ### What to improve
 
-There is always things that you want to improve when developing something. For example I want to add more tests or limit the amount of buttons in the pagination to those closer to the current page.
+There is always things that you want to improve when developing something. For example I want to add more tests, async tests, split the actions and reducers into different files or limit the amount of buttons in the pagination to those closer to the current page.
 
-The CSS can be improved wuth with animations.
+The CSS can be improved with animations.
 
 ### Additional notes
 
