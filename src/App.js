@@ -7,9 +7,6 @@ import NotFound from './components/NotFound/NotFound';
 import classes from './App.module.scss';
 import NavBar from './containers/NavBar/NavBar';
 
-// TODO:
-// Handle Server Error
-
 function App() {
   return (
     <div className={classes.App}>
