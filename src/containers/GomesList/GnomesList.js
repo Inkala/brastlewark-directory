@@ -8,6 +8,7 @@ import classes from './GnomesList.module.scss';
 import GnomeCard from '../../components/GnomeCard/GnomeCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Pagination from '../../components/Pagination/Pagination';
+import ServerError from '../../components/ServerError/ServerError';
 
 class GnomesList extends Component {
   state = {
@@ -62,7 +63,12 @@ class GnomesList extends Component {
   };
 
   render() {
-    const { displayedGnomes, filteredGnomes, cardsPerPage, currentPage } = this.state;
+    const {
+      displayedGnomes,
+      filteredGnomes,
+      cardsPerPage,
+      currentPage
+    } = this.state;
     let gnomesList = (
       <p>This gnome doesn't live here. Please try another name...</p>
     );
@@ -83,7 +89,9 @@ class GnomesList extends Component {
       </div>
     );
 
-    return (
+    return this.props.error ? (
+      <ServerError />
+    ) : (
       <main className={classes.gnomesList}>
         <SearchBar />
         <h1>Welcome to Brastlewark!</h1>
@@ -118,7 +126,8 @@ const mapStateToProps = state => {
   return {
     gnomes: state.gnomes,
     loading: state.loading,
-    searchTerm: state.searchTerm
+    searchTerm: state.searchTerm,
+    error: state.error
   };
 };
 

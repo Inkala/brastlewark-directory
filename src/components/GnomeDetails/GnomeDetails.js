@@ -8,18 +8,19 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import * as actions from '../../store/actions/actions';
 import classes from './GnomesDetails.module.scss';
+import ServerError from '../ServerError/ServerError';
 
 class GnomeDetails extends Component {
   state = {
     gnome: {},
     friendsList: []
   };
-  
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.onGetOneGnome(id);
   }
-  
+
   componentDidUpdate(prevProps) {
     if (this.props.match.params !== prevProps.match.params) {
       this.props.onGetOneGnome(this.props.match.params.id);
@@ -58,9 +59,7 @@ class GnomeDetails extends Component {
     if (friendsList && friendsList.length) {
       friends = friendsList.map(friend => (
         <li key={friend.id} className={classes.infoItem}>
-          <Link to={`/gnomes/${friend.id}`}>
-            {friend.name}
-          </Link>
+          <Link to={`/gnomes/${friend.id}`}>{friend.name}</Link>
         </li>
       ));
     }
@@ -71,7 +70,11 @@ class GnomeDetails extends Component {
       </div>
     );
 
-    return (
+    return this.props.error ? (
+      <section className={classes.gnomeDetails}>
+        <ServerError />
+      </section>
+    ) : (
       <section className={classes.gnomeDetails}>
         <h1>{gnome.name}</h1>
         {gnome.name ? (
@@ -79,7 +82,7 @@ class GnomeDetails extends Component {
             <div className={classes.gnomeImage} style={gnomeImg}></div>
             <section className={classes.gnomeInfo}>
               <p><strong>Race:</strong> Gnome</p>
-              <p><strong>Gender:</strong> {gnome.name.length < 20 ? 'Male' : 'Female'}</p>
+              <p><strong>Gender:</strong>{' '}{gnome.name.length < 20 ? 'Male' : 'Female'}</p>
               <p><strong>Age:</strong> {gnome.age}</p>
               <p><strong>Weight:</strong> {gnome.weight.toFixed(2)} kg</p>
               <p><strong>Height:</strong> {Math.round(gnome.height)} cm</p>
@@ -106,7 +109,8 @@ const mapStateToProps = state => {
   return {
     gnome: state.oneGnome,
     loading: state.loading,
-    friendsList: state.friendsList
+    friendsList: state.friendsList,
+    error: state.error
   };
 };
 
@@ -115,7 +119,7 @@ GnomeDetails.propTypes = {
   loading: PropTypes.bool,
   friendsList: PropTypes.array,
   onGetOneGnome: PropTypes.func,
-  onGetFriendsList: PropTypes.func,
+  onGetFriendsList: PropTypes.func
 };
 
 const mapDispatchToProps = dispatch => {

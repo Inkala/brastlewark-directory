@@ -19,13 +19,13 @@ const reducer = (state = initialState, action) => {
         gnomes: action.gnomes,
         loading: false
       };
-    case actionTypes.GET_ALL_GNOMES_FAIL:
+    case actionTypes.GET_ALL_GNOMES_FAIL: 
       return {
         ...state,
-        loading: false
+        loading: false,
+        error: action.error
       };
     case actionTypes.GET_ONE_GNOME_SUCCESS:
-      debugger;
       return {
         ...state,
         oneGnome: action.oneGnome,
