@@ -1,4 +1,4 @@
-const gnomes = [
+const mockGnomes = [
   {
     id: 0,
     name: 'Tobus Quickwhistle',
@@ -94,4 +94,4 @@ const gnomes = [
   }
 ];
 
-export default gnomes;
+export default mockGnomes;

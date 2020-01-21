@@ -1,4 +1,4 @@
-import axios from '../../helpers/directoryService';
+import return axios from '../../helpers/directoryService';
 import * as actionTypes from './actionTypes';
 
 export const getAllGnomesSuccess = gnomes => {
@@ -24,7 +24,7 @@ export const getAllGnomesStart = () => {
 export const getAllGnomes = () => {
   return dispatch => {
     dispatch(getAllGnomesStart());
-    axios
+    return axios
       .get('/data.json')
       .then(res => {
         dispatch(getAllGnomesSuccess(res.data.Brastlewark));
@@ -45,7 +45,7 @@ export const getOneGnomeSuccess = oneGnome => {
 export const getOneGnome = gnomeId => {
   return dispatch => {
     dispatch(getAllGnomesStart());
-    axios
+    return axios
       .get('/data.json')
       .then(res => {
         const singleGnome = res.data.Brastlewark.find(
@@ -76,7 +76,7 @@ export const getFriendsListSuccess = friendsList => {
 export const getFriendsList = friendsArr => {
   return dispatch => {
     dispatch(getAllGnomesStart());
-    axios
+    return axios
       .get('/data.json')
       .then(res => {
         const friendsList = friendsArr.map(friend =>

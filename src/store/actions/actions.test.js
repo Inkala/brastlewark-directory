@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import * as actionTypes from '../actions/actionTypes';
-import * as actions from '../actions/actions';
+import * as actionTypes from './actionTypes';
+import * as actions from './actions';
 
 describe('Actions', () => {
   it('should set serchTerm from serchBar input', () => {
