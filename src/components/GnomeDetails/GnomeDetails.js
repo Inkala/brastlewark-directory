@@ -66,7 +66,7 @@ class GnomeDetails extends Component {
 
     const spinner = (
       <div className={classes.loading}>
-        <img src="/img/loading.gif" alt="loading" />
+        <img src="img/loading.gif" alt="loading" />
       </div>
     );
 
