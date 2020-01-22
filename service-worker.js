@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/brastlewark-directory/precache-manifest.066e79b01b3f7b2f556e8ad6113deb15.js"
+  "/brastlewark-directory/precache-manifest.b366746a073f4396cd7c25d7184e7c38.js"
 );
 
 self.addEventListener('message', (event) => {
