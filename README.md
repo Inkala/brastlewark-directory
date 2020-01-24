@@ -10,9 +10,9 @@ The app has a main page that renders a card for each gnome divided by pages acco
 
 For this test I chose to use [React](https://reactjs.org/) for it is not only the JavaScript tool in which I have more knowledge and experience, but also because it is one of the suggestions for the test.
 
-I also used [Redux](https://redux.js.org/) because it is a tool used with [React](https://reactjs.org/) very often, and because having a global state can be really usefull when handling data that should be available and modified by more than one component.
+I also used [Redux](https://redux.js.org/) because it is a tool used with [React](https://reactjs.org/) very often, and because having a global state can be really useful when handling data that should be available and modified by more than one component.
 
-For getching the information from the URL I used [axios](https://github.com/axios/axios).
+For fetching the information from the URL I used [axios](https://github.com/axios/axios).
 
 ### Success
 
@@ -26,7 +26,7 @@ I also haven't worked much with tests so I had to do some research on that. I tr
 
 ### What to improve
 
-There is always things that you want to improve when developing something. For example I want to add more tests, async tests, split the actions and reducers into different files or limit the amount of buttons in the pagination to those closer to the current page.
+There are always things that you want to improve when developing something. For example I want to add more tests, async tests, split the actions and reducers into different files or limit the amount of buttons in the pagination to those closer to the current page.
 
 The CSS can be improved with animations.
 

@@ -19,6 +19,6 @@ describe('<NavBar />', () => {
   });
 
   it('should render an image for the logo', () => {
-    expect(wrapper.find('img').props().src).to.equal("/img/logo.png");
+    expect(wrapper.find('img').props().src).to.equal("img/logo.png");
   });
 });
