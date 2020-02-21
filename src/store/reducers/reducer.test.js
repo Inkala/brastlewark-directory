@@ -27,9 +27,11 @@ const oneGnome = {
 describe('Reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).to.eql({
-      gnomes: [],
+      allGnomes: [],
+      filteredGnomes: [],
       oneGnome: {},
-      searchTerm: ''
+      searching: false,
+      error: null
     });
   });
 
@@ -37,21 +39,24 @@ describe('Reducer', () => {
     expect(
       reducer(
         {
-          gnomes: [],
+          allGnomes: [],
+          filteredGnomes: [],
           oneGnome: {},
-          searchTerm: '',
-          loading: true
+          searching: false,
+          error: null
         },
         {
           type: actionTypes.GET_ALL_GNOMES_SUCCESS,
-          gnomes
+          allGnomes: gnomes
         }
       )
     ).to.eql({
-      gnomes,
+      allGnomes: gnomes,
+      filteredGnomes: gnomes,
       oneGnome: {},
-      searchTerm: '',
-      loading: false
+      searching: false,
+      loading: false,
+      error: null
     });
   });
 
@@ -61,7 +66,7 @@ describe('Reducer', () => {
         {
           gnomes: gnomes,
           oneGnome: {},
-          searchTerm: '',
+          searching: false,
           loading: true
         },
         {
@@ -72,9 +77,8 @@ describe('Reducer', () => {
     ).to.eql({
       gnomes: gnomes,
       oneGnome,
-      searchTerm: '',
+      searching: false,
       loading: false
     });
   });
-
 });

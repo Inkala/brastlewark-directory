@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
-    case actionTypes.GET_ALL_GNOMES_SUCCESS:
+    case actionTypes.GET_ALL_GNOMES_SUCCESS:      
       return {
         ...state,
         allGnomes: action.allGnomes,
