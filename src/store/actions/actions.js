@@ -73,16 +73,6 @@ export const filterGnomes = searchTerm => {
   };
 };
 
-// const handleGnomesFilter = useCallback(
-//   searchTerm => {
-//     const filteredGnomes = allGnomes.filter(({ name }) =>
-//       name.toLowerCase().match(searchTerm)
-//     );
-//     setFilteredGnomes(filteredGnomes);
-//     setCurrentPage(1);
-//   },
-//   [allGnomes]
-// );
 
 export const getFriendsListSuccess = friendsList => {
   return {
