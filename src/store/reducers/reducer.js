@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   gnomes: [],
   oneGnome: {},
-  searchTerm: ''
+  searchTerm: '',
+  error: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,7 +20,7 @@ const reducer = (state = initialState, action) => {
         gnomes: action.gnomes,
         loading: false
       };
-    case actionTypes.GET_ALL_GNOMES_FAIL: 
+    case actionTypes.GET_ALL_GNOMES_FAIL:
       return {
         ...state,
         loading: false,
@@ -39,7 +40,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.GET_FRIENDS_LIST_SUCCESS:
       return {
         ...state,
-        friendsList: action.friendsList
+        friendsList: action.friendsList,
+        loading: false
       };
     default:
       return state;

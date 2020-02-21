@@ -87,6 +87,20 @@
     align-self: flex-end;
     padding: 5px;
     margin-top: 6px;
+    font-size: 0.85em;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: $brown;
+    }
+
+    &:active {
+      color: $blue;
+    }
 
     svg {
       margin-right: 5px;

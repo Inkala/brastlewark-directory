@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import GnomesList from './containers/GomesList/GnomesList';
-import GnomeDetails from './components/GnomeDetails/GnomeDetails';
+import GnomesList from './pages/GomesList/GnomesList';
+import GnomeDetails from './pages/GnomeDetails/GnomeDetails';
 import NotFound from './components/NotFound/NotFound';
 import classes from './App.module.scss';
-import NavBar from './containers/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar';
 
-function App() {
+const App = () => {
   return (
     <div className={classes.App}>
       <NavBar />

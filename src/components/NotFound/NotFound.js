@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <section className={classes.notFound}>
       <div className={classes.notFoundWrapper}>
-        <img src="img/gnome-character.jpg" alt='' />
+        <img src="/img/gnome-character.jpg" alt='' />
         <div>
           <h2>~ 404 ~</h2>
           <h3>Are you lost, traveler?</h3>

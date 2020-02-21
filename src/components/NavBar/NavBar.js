@@ -8,7 +8,7 @@ const NavBar = () => {
     <nav className={classes.navBar}>
       <NavLink className='test' to="/">
         <img
-          src="img/logo.png"
+          src="/img/logo.png"
           alt="Brastlewark logo"
           className={classes.logo}
         />
