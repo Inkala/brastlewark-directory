@@ -1,9 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  gnomes: [],
+  allGnomes: [],
+  filteredGnomes: [],
   oneGnome: {},
-  searchTerm: '',
+  searching: false,
   error: null
 };
 
@@ -17,7 +18,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.GET_ALL_GNOMES_SUCCESS:
       return {
         ...state,
-        gnomes: action.gnomes,
+        allGnomes: action.allGnomes,
+        filteredGnomes: action.allGnomes,
         loading: false
       };
     case actionTypes.GET_ALL_GNOMES_FAIL:
@@ -36,6 +38,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         searchTerm: action.searchTerm
+      };
+    case actionTypes.FILTER_GNOMES:
+      const gnomes = state.allGnomes.filter(({ name }) =>
+        name.toLowerCase().match(action.searchTerm)
+      );
+      return {
+        ...state,
+        filteredGnomes: gnomes,
+        searching: action.searchTerm ? true : false
       };
     case actionTypes.GET_FRIENDS_LIST_SUCCESS:
       return {

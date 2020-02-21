@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   const handleSearch = event => {
     setInputSearch(event.target.value);
-    dispatch(actions.setSearchTerm(event.target.value.toLowerCase()));
+    dispatch(actions.filterGnomes(event.target.value.toLowerCase()));
   };
 
   return (

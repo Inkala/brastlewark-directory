@@ -1,10 +1,10 @@
 import axios from '../../helpers/directoryService';
 import * as actionTypes from './actionTypes';
 
-export const getAllGnomesSuccess = gnomes => {
+export const getAllGnomesSuccess = allGnomes => {
   return {
     type: actionTypes.GET_ALL_GNOMES_SUCCESS,
-    gnomes
+    allGnomes
   };
 };
 
@@ -65,6 +65,24 @@ export const setSearchTerm = searchTerm => {
     searchTerm
   };
 };
+
+export const filterGnomes = searchTerm => {
+  return {
+    type: actionTypes.FILTER_GNOMES,
+    searchTerm
+  };
+};
+
+// const handleGnomesFilter = useCallback(
+//   searchTerm => {
+//     const filteredGnomes = allGnomes.filter(({ name }) =>
+//       name.toLowerCase().match(searchTerm)
+//     );
+//     setFilteredGnomes(filteredGnomes);
+//     setCurrentPage(1);
+//   },
+//   [allGnomes]
+// );
 
 export const getFriendsListSuccess = friendsList => {
   return {

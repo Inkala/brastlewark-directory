@@ -11,32 +11,16 @@ import ServerError from '../../components/ServerError/ServerError';
 
 const GnomesList = () => {
   const dispatch = useDispatch();
-  const { gnomes, searchTerm, loading, error } = useSelector(state => state);
+  const { filteredGnomes, searching, loading, error } = useSelector(
+    state => state
+  );
 
   // Gnomes to show after filter and pagination
   const [displayedGnomes, setDisplayedGnomes] = useState([]);
-  // Gnomes to use on pagination
-  const [filteredGnomes, setFilteredGnomes] = useState(null);
   // Total amount of gnomes to calculate amount of pages
   const [totalGnomes, setTotalGnomes] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 30;
-
-  const handlePageChange = currentPage => {
-    setCurrentPage(currentPage);
-    handlePagination(currentPage);
-  };
-
-  const handleGnomesFilter = useCallback(
-    searchTerm => {
-      const filteredGnomes = gnomes.filter(({ name }) =>
-        name.toLowerCase().match(searchTerm)
-      );
-      setFilteredGnomes(filteredGnomes);
-      setCurrentPage(1);
-    },
-    [gnomes]
-  );
 
   const handlePagination = useCallback(
     currentPage => {
@@ -51,23 +35,20 @@ const GnomesList = () => {
     [filteredGnomes]
   );
 
+  const handlePageChange = currentPage => {
+    setCurrentPage(currentPage);
+    handlePagination(currentPage);
+  };
+
   useEffect(() => {
     dispatch(actions.getAllGnomes());
   }, [dispatch]);
-
-  useEffect(() => {
-    setFilteredGnomes(gnomes);
-  }, [gnomes]);
 
   useEffect(() => {
     if (filteredGnomes) {
       handlePagination(currentPage);
     }
   }, [handlePagination, filteredGnomes, currentPage]);
-
-  useEffect(() => {
-    handleGnomesFilter(searchTerm);
-  }, [handleGnomesFilter, searchTerm, gnomes]);
 
   let gnomesList = (
     <p>This gnome doesn't live here. Please try another name...</p>
@@ -97,7 +78,7 @@ const GnomesList = () => {
     <main className={classes.gnomesList}>
       <SearchBar />
       <h1>Welcome to Brastlewark!</h1>
-      {loading || (!displayedGnomes.length && !searchTerm) ? (
+      {loading || (!displayedGnomes.length && !searching) ? (
         spinner
       ) : (
         <React.Fragment>
