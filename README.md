@@ -6,7 +6,7 @@ To see this test working, clone the repository, type `npm install` from the root
 
 The app has a main page that renders a card for each gnome divided by pages according to the amount of results from the JSON. The search bar filters the gnomes by name and clicking the card will open the details page with all the information about the gnomes and links to their friends.
 
-###Technologies used
+### Technologies used
 
 For this test I chose to use [React](https://reactjs.org/) for it is not only the JavaScript tool in which I have more knowledge and experience, but also because it is one of the suggestions for the test.
 
